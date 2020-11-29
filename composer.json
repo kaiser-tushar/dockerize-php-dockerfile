@@ -1,0 +1,21 @@
+{
+    "name": "kaiser/docker-based-php-app",
+    "description": "Implementation of Docker based PHP App",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kaiser Ahmed Tushar",
+            "email": "kaiser.tushar@yahoo.com"
+        }
+    ],
+    "require": {
+        "nahid/jsonq": "^6.0",
+        "twig/twig": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\":"src"
+        }
+    }
+}
