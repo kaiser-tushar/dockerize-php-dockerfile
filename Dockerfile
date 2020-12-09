@@ -7,18 +7,14 @@ RUN a2enmod rewrite
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --install-dir=. --filename=composer
 RUN mv composer /usr/local/bin/
-WORKDIR /tmp/
-COPY composer.json composer.json
-COPY composer.lock composer.lock
+#Map source code for Apache
+COPY . /var/www/html/
+WORKDIR /var/www/html/
+#install dependencies
 RUN composer install \
     --ignore-platform-reqs \
     --no-interaction \
     --no-plugins \
     --no-scripts \
     --prefer-dist
-
-COPY . /var/www/html/
-COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
-
-WORKDIR /var/www/html/
 EXPOSE 80
